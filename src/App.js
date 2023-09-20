@@ -7,6 +7,7 @@ import NewEntry from './screens/NewEntry';
 import NewEmployee from './screens/AddNewEmployee';
 import UpdateEntry from './screens/UpdateEntry';
 import Navbar from './components/Navbar';
+import UpdateEmployee from './screens/UpdatEmployee';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/new_entry' element={<NewEntry/>}/>
           <Route path='/new_employee' element={<NewEmployee/>}/>
           <Route path='/edit_entry/:id' element={<UpdateEntry/>}/>
+          <Route path='/edit_employee/:id' element={<UpdateEmployee/>}/>
         </Routes>
       </Router>
     </div>

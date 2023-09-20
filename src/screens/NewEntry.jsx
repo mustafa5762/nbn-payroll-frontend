@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '../components/Textfield';
 import UsernameSelector from '../components/UsernameSelector';
 import CheckboxGroup from '../components/CheckboxGroup';
@@ -20,10 +20,28 @@ function NewEntry() {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [usernames, setUsernames] = useState([]); // Initialize as an empty array
 
   // Data
-  const usernames = ["user1", "user2", "user3"]; 
   const options = ["W:B 6:00 (M-F)", "W:B 18:00 (M-F)", "Work on Saturday", "Work on Sunday", "Work on Red Day"];
+
+  useEffect(() => {
+    // Fetch real usernames from the /employeenames endpoint
+    async function fetchUsernames() {
+      try {
+        const response = await instance.get('/employeenames');
+        if (response.status === 200) {
+          setUsernames(response.data.employeeNames); // Set the usernames array with the fetched data
+        } else {
+          setErrorMessage("Failed to fetch employee names.");
+        }
+      } catch (error) {
+        handleApiError(error);
+      }
+    }
+
+    fetchUsernames(); // Call the fetchUsernames function when the component mounts
+  }, []);
 
   // Event handlers for input changes
   const handleCheckboxChange = (values) => {
@@ -132,7 +150,7 @@ function NewEntry() {
           <TextField style='fill' label='Date' type='date' value={date} onChange={(e) => handleInputChange(e, setDate)} />
           <UsernameSelector
             label="Employee name"
-            usernames={usernames}
+            usernames={usernames} // Use the fetched usernames
             selectedUsername={selectedUsername}
             onChange={(e) => handleInputChange(e, setSelectedUsername)}
           />

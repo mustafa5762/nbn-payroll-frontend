@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import TextField from '../components/Textfield';
-import UsernameSelector from '../components/UsernameSelector';
 import instance from '../axios';
 
 function NewEmployee() {

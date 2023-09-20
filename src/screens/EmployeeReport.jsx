@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import instance from '../axios';
 import TextField from '../components/Textfield';
 import UsernameSelector from '../components/UsernameSelector';
@@ -11,8 +11,25 @@ function EmployeeReport() {
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [selectedUsername, setSelectedUsername] = useState('');
+  const [usernames, setUsernames] = useState([]); // Initialize as an empty array
 
-  const usernames = ["user1", "user2", "user3"];
+  useEffect(() => {
+    // Fetch real usernames from the /employeenames endpoint when the component mounts
+    async function fetchUsernames() {
+      try {
+        const response = await instance.get('/employeenames');
+        if (response.status === 200) {
+          setUsernames(response.data.employeeNames); // Set the usernames array with the fetched data
+        } else {
+          setError("Failed to fetch employee names.");
+        }
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+
+    fetchUsernames(); // Call the fetchUsernames function when the component mounts
+  }, []);
 
   const fetchEntries = async () => {
     try {
@@ -57,7 +74,7 @@ function EmployeeReport() {
           />
           <UsernameSelector
             label="Employee name"
-            usernames={usernames}
+            usernames={usernames} // Use the fetched usernames
             selectedUsername={selectedUsername}
             onChange={(e) => setSelectedUsername(e.target.value)}
           />

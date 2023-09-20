@@ -1,5 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 function DataTable({ data, onEditClick }) {
   return (
@@ -46,12 +47,9 @@ function DataTable({ data, onEditClick }) {
                 {employee.status}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
-                <button
-                  className="text-[#5792cf] font-medium underline"
-                  onClick={() => onEditClick(employee._id)}
-                >
+                <Link to={`/edit_employee/${employee._id}`} className='text-[#5792cf] underline'>
                   Edit
-                </button>
+                </Link>
               </td>
             </tr>
           ))}
