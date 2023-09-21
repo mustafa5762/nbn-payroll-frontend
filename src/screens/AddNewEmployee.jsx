@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import TextField from '../components/Textfield';
 import instance from '../axios';
+import { Navigate } from 'react-router-dom';
 
-function NewEmployee() {
+function NewEmployee({isLoggedIn}) {
   // State variables
   const [username, setUsername] = useState("");
   const [date, setDate] = useState("");
@@ -34,7 +35,7 @@ function NewEmployee() {
       jobStartDate: new Date(date).toISOString(), // Convert date to ISO format
       employeeName: username,
       jobDesignation,
-      employeeID: "sad"
+      employeeID: Math.random()
     };
 
     try {
@@ -79,6 +80,11 @@ function NewEmployee() {
   };
 
   // JSX return
+
+  if (!isLoggedIn) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <div>
       <div className="flex flex-col items-center justify-center mt-40">

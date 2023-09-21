@@ -70,10 +70,13 @@ function DataTable({ data, onEditClick }) {
                 {entry.workingHours}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
-                {entry.total}
+                {entry.ratePerHour * entry.workingHours}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
-                {entry.overtime}
+                {/* Filter the true values from overtimeOptions and join them with a comma */}
+                {Object.keys(entry.overtimeOptions)
+                  .filter((key) => entry.overtimeOptions[key] === true)
+                  .join(', ')}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
                 {entry.otCalculation}
@@ -88,7 +91,7 @@ function DataTable({ data, onEditClick }) {
                 {entry.otherAllowances}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
-                {entry.grandTotal}
+              {(entry.ratePerHour * entry.workingHours) + entry.otCalculation + entry.driving + entry.sickness + entry.otherAllowances}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
                 {entry.description}

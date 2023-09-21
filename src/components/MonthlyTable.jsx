@@ -49,7 +49,7 @@ function DataTable({ data, onEditClick }) {
                 {entry.workingHours}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
-                {entry.total}
+              {entry.ratePerHour * entry.workingHours}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
                 {entry.otCalculation}
@@ -64,7 +64,7 @@ function DataTable({ data, onEditClick }) {
                 {entry.otherAllowances}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
-                {entry.grandTotal}
+              {(entry.ratePerHour * entry.workingHours) + entry.otCalculation + entry.driving + entry.sickness + entry.otherAllowances}
               </td>
             </tr>
           ))}
