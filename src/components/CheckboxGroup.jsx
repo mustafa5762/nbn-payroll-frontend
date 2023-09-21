@@ -11,9 +11,9 @@ const CheckboxGroup = ({ label, options, selectedValues, onChange }) => {
   };
 
   return (
-    <div className="mb-4 flex flex-col md:flex-row md:items-center">
-      <label className="block text-[#5792cf] font-medium md:w-36 text-right">{label}</label>
-      <div className="flex justify-end flex-wrap">
+    <div className=" ml-12  mb-4 flex flex-col md:flex-row md:items-center">
+      <label className="block text-[#5792cf] font-small md:w-28 text-right">{label}</label>
+      <div className="flex justify-start ml-4 flex-wrap font-small">
         {options.map((option) => (
           <label key={option} className="inline-flex items-center mt-2 mr-4">
             <input

@@ -32,6 +32,7 @@ function EmployeeReport() {
   }, []);
 
   const fetchEntries = async () => {
+    debugger
     try {
       setLoading(true);
       const response = await instance.get(`/entriesofemployeer?startDate=${fromDate}&endDate=${toDate}&employeeName=${selectedUsername}`);

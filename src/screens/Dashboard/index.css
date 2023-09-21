@@ -1,0 +1,58 @@
+/* App.css */
+.marquee-container {
+    width: 100vw;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 1px solid #5792cf;
+    border-top: 1px solid #5792cf;
+  }
+  
+  .marquee-text {
+    display: inline-block;
+    animation: scroll 10s linear infinite;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(-250%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+  
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 20px; /* Gap between items */
+    max-width: 800px; /* Optional: Set a maximum width for the grid container */
+    margin: 0 auto; /* Optional: Center the grid container horizontally */
+  }
+  
+  .grid-item {
+    text-align: center;
+    /* // padding: 20px; */
+    border: 1px solid #ccc;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+    margin: 0;
+    border-bottom: 1px solid #5792cf ;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  
+  p {
+    font-size: 1.8em;
+    margin: 0;
+    color: #5792cf;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  
+  .bgblue{
+   background-color:  #5792cf;
+   color: white;
+  }

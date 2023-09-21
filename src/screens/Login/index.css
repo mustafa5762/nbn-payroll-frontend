@@ -1,0 +1,41 @@
+.login{
+    border: 1px solid #5792cf;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    vertical-align: middle;
+    max-width: 30%;
+    padding: 1% 2%;
+    
+    margin: 8% 38%;
+
+    width: 23%;
+}
+
+.heading h1{
+  font-size: 25px;
+}
+
+.label{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* // font-size: 18px; */
+ 
+}
+.label   h5{ padding: 0;
+  margin: 15px;
+ }
+
+.label input{
+  background-color: #5792cf !important;
+  height: 37px;
+  border: 0;
+}
+hr{
+    height: 30px;
+    width: 100%;
+    margin-top: 10px;
+  color: #5792cf !important;
+  background-color: #5792cf !important;
+}

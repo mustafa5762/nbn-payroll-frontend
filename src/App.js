@@ -8,6 +8,8 @@ import NewEmployee from './screens/AddNewEmployee';
 import UpdateEntry from './screens/UpdateEntry';
 import Navbar from './components/Navbar';
 import UpdateEmployee from './screens/UpdatEmployee';
+import Dashboard from './screens/Dashboard';
+import Login from './screens/Login';
 
 
 function App() {
@@ -16,6 +18,9 @@ function App() {
       <Router>
         <Navbar/>
         <Routes>
+        <Route path="/l" element={<Login/>}/>
+
+        <Route path="/" element={<Dashboard/>}/>
           <Route path="/daily_report" element={<DailyReport/>}/>
           <Route path="/monthly_report" element={<MonthlyReport/>}/>
           <Route path='/employee_report' element={<EmployeeReport/>}/>
