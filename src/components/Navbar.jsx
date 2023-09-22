@@ -6,20 +6,15 @@ function Navbar() {
   const navigate = useNavigate();
 
   const accessToken = Cookies.get('accessToken');
-  function deleteCookie(cookieName) {
-    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-  }
 
   const handleLogout = () => {
-    debugger
-    deleteCookie(accessToken);
-    navigate('/employees');
-
+    Cookies.remove('accessToken')
+    window.location = '/login'
   }
   return (
     <div>
         <div className="text-5xl text-[#5792cf] text-center py-5 font-bold">NBN PAYROLL SYSTEM</div>
-      {!accessToken ? 
+      {accessToken ? 
       <div className="flex justify-center items-center p-2 space-x-8 bg-[#5792cf]">
             <NavLink className={({ isActive }) =>
               isActive

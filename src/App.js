@@ -18,7 +18,7 @@ function App() {
   const username = Cookies.get('username');
   const accessToken = Cookies.get('accessToken');
 
-  const isLoggedIn = !accessToken; // Check if the user is logged in
+  const isLoggedIn = !!accessToken; // Check if the user is logged in
 
   return (
     <div className="App">
