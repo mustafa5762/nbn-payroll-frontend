@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../axios';
 import DataTable from '../components/EmployeeTable';
+import { Link } from 'react-router-dom';
 
 function Employees() {
   const [entries, setEntries] = useState([]);
@@ -28,8 +29,9 @@ function Employees() {
     <div className="p-4">
       <div className="flex mb-6 items-center space-x-6">
         <h1 className="text-4xl mb-4 text-[#5792cf] font-bold underline">Employees</h1>
-        <button className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add New Employee</button>
-      </div>
+        <Link to="/new_employee" className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+  Add New Employee
+</Link>      </div>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (

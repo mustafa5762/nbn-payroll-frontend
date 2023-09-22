@@ -3,6 +3,7 @@ import instance from '../axios';
 import TextField from '../components/Textfield';
 import UsernameSelector from '../components/UsernameSelector';
 import DataTable from '../components/EmployeeReportTable';
+import { Link } from 'react-router-dom';
 
 function EmployeeReport() {
   const [entries, setEntries] = useState([]);
@@ -54,11 +55,13 @@ function EmployeeReport() {
     <div className='p-4'>
       <div className="flex mb-6 items-center space-x-6">
         <h1 className="text-4xl mb-4 text-[#5792cf] font-bold underline">Employee Report</h1>
-        <button className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Salary Slip</button>
+        
+        <Link to="/salary_slip" className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Salary Slip</Link>
+     
       </div>
       <div className="flex justify-between items-center">
         <div></div>
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center ">
           <TextField
             label='From'
             type='date'

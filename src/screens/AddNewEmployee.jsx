@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import TextField from '../components/Textfield';
 import instance from '../axios';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useHistory, useNavigate } from 'react-router-dom';
 
 function NewEmployee({isLoggedIn}) {
   // State variables
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [date, setDate] = useState("");
   const [jobDesignation, setJobDesignation] = useState("");
@@ -56,6 +57,7 @@ function NewEmployee({isLoggedIn}) {
       setLoading(false)
       setTimeout(() => setSuccessMessage(""), 5000);
     }
+    navigate('/employees');
   };
 
   // Function to handle API errors
@@ -81,12 +83,14 @@ function NewEmployee({isLoggedIn}) {
 
   // JSX return
 
-  if (!isLoggedIn) {
-    return <Navigate to="/" replace />;
-  }
+  // if (!isLoggedIn) {
+  //   return <Navigate to="/" replace />;
+  // }
 
   return (
     <div>
+        <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Add Employee</h1>
+
       <div className="flex flex-col items-center justify-center mt-40">
         {errorMessage && (
           <div className="bg-red-100 border border-red-400 text-red-900 mb-4 px-4 py-2 rounded-sm">{errorMessage}</div>
@@ -94,14 +98,14 @@ function NewEmployee({isLoggedIn}) {
         {successMessage && (
           <div className="text-green-500 mb-4">{successMessage}</div>
         )}
-        <form onSubmit={handleSubmit} className="w-full max-w-lg flex flex-col space-y-4">
+        <form onSubmit={handleSubmit} className="w-full max-w flex flex-col space-y-4">
           <TextField style='fill' label='Date' type='date' value={date} onChange={(e) => handleInputChange(e, setDate)} />
           <TextField  style='fill'label='Job Designation' type='text' value={jobDesignation} onChange={(e) => handleInputChange(e, setJobDesignation)} />
           <TextField style='fill' label='Employee Name' type='text' value={username} onChange={(e) => handleInputChange(e, setUsername)} />
           <div className="mt-4">
             <button
               type="submit"
-              className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex justify-end"
               disabled={loading}
             >
               {loading ? "Submitting..." : "Submit"}

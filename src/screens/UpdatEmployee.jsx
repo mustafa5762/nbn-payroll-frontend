@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import TextField from '../components/Textfield';
 import instance from '../axios';
+import { useNavigate } from 'react-router-dom';
 
 function UpdateEmployee({ match }) {
   // State variables
+  const navigate = useNavigate();
+
   const [employee, setEmployee] = useState({
     username: "",
     date: "",
@@ -94,6 +97,7 @@ setEmployee({
       setLoading(false);
       setTimeout(() => setSuccessMessage(""), 5000);
     }
+    navigate('/employees');
   };
 
   // Function to handle API errors
@@ -113,6 +117,8 @@ setEmployee({
   // JSX return
   return (
     <div>
+        <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Update Employee</h1>
+
       <div className="flex flex-col items-center justify-center mt-40">
         {errorMessage && (
           <div className="bg-red-100 border border-red-400 text-red-900 mb-4 px-4 py-2 rounded-sm">{errorMessage}</div>

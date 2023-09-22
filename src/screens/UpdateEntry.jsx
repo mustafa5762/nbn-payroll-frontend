@@ -3,10 +3,12 @@ import TextField from '../components/Textfield';
 import UsernameSelector from '../components/UsernameSelector';
 import CheckboxGroup from '../components/CheckboxGroup';
 import instance from '../axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function UpdateEntry() {
   // State variables
+  const navigate = useNavigate();
+
   const [entry, setEntry] = useState({});
   const [selectedUsername, setSelectedUsername] = useState("");
   const [date, setDate] = useState("");
@@ -113,6 +115,8 @@ const handleSubmit = async (e) => {
       setLoading(false);
       setTimeout(() => setSuccessMessage(""), 5000);
     }
+    navigate('/daily_report');
+
   };
 
   
@@ -139,6 +143,8 @@ const handleSubmit = async (e) => {
   // JSX return
   return (
     <div>
+        <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Update Entry</h1>
+
       <div className="flex flex-col items-center justify-center mt-40">
         {errorMessage && (
           <div className="bg-red-100 border border-red-400 text-red-900 mb-4 px-4 py-2 rounded-sm">{errorMessage}</div>

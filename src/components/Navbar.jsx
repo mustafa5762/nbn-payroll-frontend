@@ -1,11 +1,26 @@
+import Cookies from 'js-cookie';
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const accessToken = Cookies.get('accessToken');
+  function deleteCookie(cookieName) {
+    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  }
+
+  const handleLogout = () => {
+    debugger
+    deleteCookie(accessToken);
+    navigate('/employees');
+
+  }
   return (
     <div>
         <div className="text-5xl text-[#5792cf] text-center py-5 font-bold">NBN PAYROLL SYSTEM</div>
-        <div className="flex justify-center items-center p-2 space-x-8 bg-[#5792cf]">
+      {!accessToken ? 
+      <div className="flex justify-center items-center p-2 space-x-8 bg-[#5792cf]">
             <NavLink className={({ isActive }) =>
               isActive
                 ? "text-xl text-[#5792cf] bg-white font-medium px-4 py-2"
@@ -51,7 +66,15 @@ function Navbar() {
             >
                 Employees
             </NavLink>
-        </div>
+            <Link className={
+               "text-white text-xl font-medium px-4 py-2"
+              } 
+              onClick={handleLogout}
+            >
+                Logout
+            </Link>
+        </div>: null }
+
     </div>
   )
 }
