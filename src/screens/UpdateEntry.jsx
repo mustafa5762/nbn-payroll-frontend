@@ -143,7 +143,7 @@ const handleSubmit = async (e) => {
   // JSX return
   return (
     <div>
-        <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Update Entry</h1>
+        <h1 className="text-4xl ml-4 mb-4 mt-4 text-[#5792cf] font-bold underline">Edit Employee Entry</h1>
 
       <div className="flex flex-col items-center justify-center mt-40">
         {errorMessage && (
@@ -169,10 +169,10 @@ const handleSubmit = async (e) => {
           <TextField style='border' label='Sickness' type='number' value={sickness} onChange={(e) => handleInputChange(e, setSickness)} />
           <TextField style='border' label='Other Allowances' type='number' value={otherAllowances} onChange={(e) => handleInputChange(e, setOtherAllowances)} />
           <TextField style='border' label='Description' type='text' value={description} onChange={(e) => handleInputChange(e, setDescription)} />
-          <div className="mt-4">
+          <div className="mt-4" style={{justifyContent: "end", display: "flex",marginRight: "3rem" }}>
             <button
-              type="submit"
-              className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit" 
+              className="bg-[#5792cf]  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               disabled={loading}
             >
               {loading ? "Updating..." : "Update"}
