@@ -31,22 +31,22 @@ function DataTable({ data, onEditClick }) {
         <tbody>
           {data.map((employee) => (
             <tr key={employee._id}>
-            <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+            <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {employee.employeeID}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {format(new Date(employee.jobStartDate), 'yyyy-MM-dd')}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {employee.employeeName}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {employee.jobDesignation}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {employee.status}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 <Link to={`/edit_employee/${employee._id}`} className='text-[#5792cf] underline'>
                   Edit
                 </Link>

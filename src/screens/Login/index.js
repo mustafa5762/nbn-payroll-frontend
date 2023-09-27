@@ -104,7 +104,8 @@ const Login = ({isLoggedIn}) => {
             {loading ? (
               <p>Loading...</p>
             ) : (
-              <button type="submit">Submit</button>
+              
+              <button type="submit" className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >Submit</button>
             )}
           </form>
         </div>

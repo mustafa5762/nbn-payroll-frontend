@@ -55,51 +55,50 @@ function DataTable({ data, totalWorkingHours, totalGrandTotal }) {
         <tbody>
           {data.map((entry) => (
             <tr key={entry.id}>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {format(new Date(entry.date), 'yyyy-MM-dd')}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.employeeName}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.jobDesignation}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.ratePerHour}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.workingHours}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.ratePerHour * entry.workingHours}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {/* Filter the true values from overtimeOptions and join them with a comma */}
                 {Object.keys(entry.overtimeOptions)
                   .filter((key) => entry.overtimeOptions[key] === true)
                   .join(', ')}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.otCalculation}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.driving}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.sickness}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.otherAllowances}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
               {(entry.ratePerHour * entry.workingHours) + entry.otCalculation + entry.driving + entry.sickness + entry.otherAllowances}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.description}
               </td>
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
-              <Link
-                  to={`/edit_entry/${entry._id}`}
+                <Link
                   className="text-[#5792cf] font-medium underline"
                 >
                   Edit

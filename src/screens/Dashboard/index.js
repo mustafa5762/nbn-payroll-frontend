@@ -41,7 +41,7 @@ const Dashboard = () => {
           <div className="marquee-container">
             <div className="marquee-text">Welcome to <b>Nbn Payroll System!!</b></div>
           </div>
-          <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Dashboard</h1>
+          <h1 className="text-4xl mb-4 ml-4 mt-4 text-[#5792cf] font-bold underline">Dashboard</h1>
 
           <div className="grid-container">
             <div className="grid-item">

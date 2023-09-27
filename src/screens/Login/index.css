@@ -4,12 +4,12 @@
     text-align: center;
     align-self: center;
     vertical-align: middle;
-    max-width: 30%;
+    max-width: 400px !important;
     padding: 1% 2%;
     
     margin: 8% 38%;
 
-    width: 23%;
+    width:400px !important;
 }
 
 .heading h1{

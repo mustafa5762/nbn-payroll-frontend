@@ -5,7 +5,7 @@ const UsernameSelector = ({ label, usernames, selectedUsername, onChange }) => {
   return (
     <div className="flex flex-col md:flex-row md:items-center">
       <label
-        className="block text-[#5792cf] font-medium md:w-36 text-right"
+        className={`block text-[#5792cf] font-medium ${label !== "From"? "md:w-36" : "md:w-16"} text-right`}
         htmlFor={label}
       >
         {label}
