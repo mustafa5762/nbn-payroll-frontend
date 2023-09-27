@@ -12,7 +12,9 @@ function EmployeeReport() {
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [selectedUsername, setSelectedUsername] = useState('');
-  const [usernames, setUsernames] = useState([]); // Initialize as an empty array
+  const [usernames, setUsernames] = useState([]); 
+  const [totalWorkingHours, setTotalWorkingHours] = useState(0);
+  const [totalGrandTotal, setTotalGrandTotal] = useState(0);
 
   useEffect(() => {
     // Fetch real usernames from the /employeenames endpoint when the component mounts
@@ -31,6 +33,19 @@ function EmployeeReport() {
 
     fetchUsernames(); // Call the fetchUsernames function when the component mounts
   }, []);
+
+  useEffect(() => {
+    const calculateTotalWorkingHours = (data) => {
+      const totalHours = data.reduce((total, entry) => total + entry.workingHours, 0);
+      const totalGrand = data.reduce((total, entry) => total + ((entry.ratePerHour * entry.workingHours) + entry.otCalculation + entry.driving + entry.sickness + entry.otherAllowances), 0);
+      setTotalWorkingHours(totalHours);
+      setTotalGrandTotal(totalGrand);
+    };
+
+    if (entries.length > 0) {
+      calculateTotalWorkingHours(entries);
+    }
+  }, [entries]);
 
   const fetchEntries = async () => {
     debugger
@@ -102,7 +117,7 @@ function EmployeeReport() {
         ) : (
           <>
             <h1 className="text-4xl mb-8 text-[#5792cf] text-center mt-6">Monthly Report of <span className="font-bold">{selectedUsername}</span> <br /> from <span className="font-bold">{fromDate}</span> to <span className="font-bold">{toDate}</span></h1>
-            <DataTable data={entries} />
+            <DataTable data={entries} totalWorkingHours={totalWorkingHours} totalGrandTotal={totalGrandTotal} />
           </>
         )}
       </div>

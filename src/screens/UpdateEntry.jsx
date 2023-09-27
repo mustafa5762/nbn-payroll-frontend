@@ -24,26 +24,27 @@ function UpdateEntry() {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [usernames, setUsernames] = useState([]); // Initialize as an empty array
 
   // Data
-  const usernames = ["user1", "user2", "user3"];
   const options = ["W:B 6:00 (M-F)", "W:B 18:00 (M-F)", "Work on Saturday", "Work on Sunday", "Work on Red Day"];
 
   const params = useParams();
-  const {id} = params;
+  const { id } = params;
 
-  // Fetch the entry data based on the provided ID when the component mounts
   useEffect(() => {
+    // Fetch the entry data based on the provided ID when the component mounts
     const fetchEntry = async () => {
       try {
         const response = await instance.get(`entry/${id}`);
-        setEntry(response.data.entry); // Assuming the API returns the entry data in the expected format
+        setEntry(response.data.entry);
+
         // Populate form fields with fetched data
         setSelectedUsername(response.data.entry.employeeName);
         const formattedDate = response.data.entry.date ? new Date(response.data.entry.date).toISOString().split('T')[0] : "";
         setDate(formattedDate);
         setJobDesignation(response.data.entry.jobDesignation);
-        setRatePerHour(0);
+        setRatePerHour(response.data.entry.ratePerHour);
         setWorkingHours(response.data.entry.workingHours);
         setOtCalculation(response.data.entry.otCalculation);
         setDrivingTraveling(response.data.entry.driving);
@@ -63,6 +64,24 @@ function UpdateEntry() {
     };
 
     fetchEntry();
+  }, [id]);
+
+  useEffect(() => {
+    // Fetch real usernames from the /employeenames endpoint
+    async function fetchUsernames() {
+      try {
+        const response = await instance.get('/employeenames');
+        if (response.status === 200) {
+          setUsernames(response.data.employeeNames); // Set the usernames array with the fetched data
+        } else {
+          setErrorMessage("Failed to fetch employee names.");
+        }
+      } catch (error) {
+        handleApiError(error);
+      }
+    }
+
+    fetchUsernames(); // Call the fetchUsernames function when the component mounts
   }, []);
 
   // Event handlers for input changes
@@ -74,11 +93,11 @@ function UpdateEntry() {
     setStateFunc(e.target.value);
   };
 
-// Form submission handler
-const handleSubmit = async (e) => {
+  // Form submission handler
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     // Create the data object for updating the entry
     const data = {
       date: date ? new Date(date).toISOString() : null,
@@ -87,6 +106,7 @@ const handleSubmit = async (e) => {
       workingHours: parseFloat(workingHours),
       otCalculation: parseFloat(otCalculation),
       driving: parseFloat(drivingTraveling),
+      ratePerHour: parseFloat(ratePerHour),
       travelling: 0, // Set to 0 or your default value
       sickness: parseFloat(sickness),
       otherAllowances: parseFloat(otherAllowances),
@@ -99,10 +119,10 @@ const handleSubmit = async (e) => {
         workAfter6PM: selectedOptions.includes("W:B 18:00 (M-F)"),
       },
     };
-  
+
     try {
       const response = await instance.post(`/entry/${id}`, data);
-  
+
       if (response.status === 200) {
         setSuccessMessage(response.data.message);
       } else {
@@ -116,11 +136,7 @@ const handleSubmit = async (e) => {
       setTimeout(() => setSuccessMessage(""), 5000);
     }
     navigate('/daily_report');
-
   };
-
-  
-  
 
   // Function to handle API errors
   const handleApiError = (error) => {
@@ -138,12 +154,11 @@ const handleSubmit = async (e) => {
       setErrorMessage("An error occurred while making the request.");
     }
   };
-  
 
   // JSX return
   return (
     <div>
-        <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Update Entry</h1>
+      <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Update Entry</h1>
 
       <div className="flex flex-col items-center justify-center mt-40">
         {errorMessage && (
