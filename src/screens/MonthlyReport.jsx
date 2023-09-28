@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import instance from '../axios';
 import DataTable from '../components/MonthlyTable';
 import TextField from '../components/Textfield';
@@ -7,8 +7,23 @@ function MonthlyReport() {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [fromDate, setFromDate] = useState(''); // State for 'From' date
-  const [toDate, setToDate] = useState('');     // State for 'To' date
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
+  const [totalWorkingHours, setTotalWorkingHours] = useState(0);
+  const [totalGrandTotal, setTotalGrandTotal] = useState(0);
+
+  useEffect(() => {
+    const calculateTotalWorkingHours = (data) => {
+      const totalHours = data.reduce((total, entry) => total + entry.workingHours, 0);
+      const totalGrand = data.reduce((total, entry) => total + ((entry.ratePerHour * entry.workingHours) + entry.otCalculation + entry.driving + entry.sickness + entry.otherAllowances), 0);
+      setTotalWorkingHours(totalHours);
+      setTotalGrandTotal(totalGrand);
+    };
+
+    if (entries.length > 0) {
+      calculateTotalWorkingHours(entries);
+    }
+  }, [entries]);
 
   const fetchEntries = async () => {
     try {
@@ -23,7 +38,6 @@ function MonthlyReport() {
     }
   };
 
-  // Function to check if both 'From' and 'To' dates are provided
   const areDatesValid = () => {
     return fromDate.trim() !== '' && toDate.trim() !== '';
   };
@@ -52,7 +66,7 @@ function MonthlyReport() {
           <button
             type="submit"
             className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            disabled={loading || !areDatesValid()} // Disable the button if dates are not provided
+            disabled={loading || !areDatesValid()}
             onClick={fetchEntries}
           >
             {loading ? "Getting Report..." : "Get Report"}
@@ -69,7 +83,7 @@ function MonthlyReport() {
         ) : (
           <>
             <h1 className="text-4xl mb-8 text-[#5792cf] text-center">Report: <span className="font-bold">{fromDate}</span> to <span className="font-bold">{toDate}</span></h1>
-            <DataTable data={entries} />
+            <DataTable data={entries} totalWorkingHours={totalWorkingHours} totalGrandTotal={totalGrandTotal} />
           </>
         )}
       </div>
@@ -78,4 +92,5 @@ function MonthlyReport() {
 }
 
 export default MonthlyReport;
+
 

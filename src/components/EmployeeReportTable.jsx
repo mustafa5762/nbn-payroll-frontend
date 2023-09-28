@@ -1,7 +1,8 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
-function DataTable({ data, onEditClick }) {
+function DataTable({ data, totalWorkingHours, totalGrandTotal }) {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full">
@@ -96,16 +97,39 @@ function DataTable({ data, onEditClick }) {
               <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.description}
               </td>
-              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
-                <button
+              <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+                <Link
                   className="text-[#5792cf] font-medium underline"
-                  onClick={() => onEditClick(entry.id)}
                 >
                   Edit
-                </button>
+                </Link>
               </td>
             </tr>
           ))}
+                        <tr>
+                        <td className="px-2 py-2 w-auto"></td>
+                        <td className="px-2 py-2 w-auto"></td>
+                <td className="px-2 py-2 w-auto border-[#5792cf] border-r"></td>
+                <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r font-bold">
+                  Total Working Hours
+                </td>
+                <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+                {totalWorkingHours}
+                </td>
+                <td className="px-2 py-2 w-auto"></td>
+                <td className="px-2 py-2 w-auto"></td>
+                <td className="px-2 py-2 w-auto"></td>
+                <td className="px-2 py-2 w-auto"></td>
+                <td className="px-2 py-2 w-auto"></td>
+                <td className="px-2 py-2 w-auto"></td>
+                <td className="px-2 py-2 w-auto border-[#5792cf] border-r"></td>
+                <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r font-bold">
+                  Total Pays
+                </td>
+                <td className="px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
+                {totalGrandTotal}
+                </td>
+              </tr>
         </tbody>
       </table>
     </div>

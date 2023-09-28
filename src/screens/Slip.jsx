@@ -3,6 +3,7 @@ import instance from '../axios';
 import TextField from '../components/Textfield';
 import UsernameSelector from '../components/UsernameSelector';
 import nbn from '../assets/nbn.jfif';
+import { format, isToday } from 'date-fns';
 
 function Slip() {
   const [entries, setEntries] = useState([]);
@@ -15,6 +16,9 @@ function Slip() {
   const [totalWorkingHours, setTotalWorkingHours] = useState(0);
   const [netTotal, setNetTotal] = useState(0);
   const [allowances, setAllowances] = useState(0);
+
+  const today = new Date();
+  const formattedDate = format(today, 'MMMM d, yyyy');
 
   useEffect(() => {
     // Fetch real usernames from the /employeenames endpoint when the component mounts
@@ -172,6 +176,12 @@ function Slip() {
             </div>
           </>
         )}
+      </div>
+
+      <div className="absolute right-10 bottom-10">
+        <h1 className='text-2xl mb-8 text-[#5792cf] text-center mt-6'>
+              Total Allowances: <span className='font-bold'>{formattedDate}</span>
+        </h1>
       </div>
     </div>
   );

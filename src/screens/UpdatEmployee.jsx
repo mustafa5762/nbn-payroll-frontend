@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import TextField from '../components/Textfield';
 import instance from '../axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function UpdateEmployee({ match }) {
+function UpdateEmployee() {
   // State variables
   const navigate = useNavigate();
+
+  const params = useParams();
+  const { id } = params;
 
   const [employee, setEmployee] = useState({
     username: "",
@@ -26,7 +29,7 @@ function UpdateEmployee({ match }) {
     setLoading(true);
 
     try {
-      const response = await instance.get(`/employee/650b3f18897953b5556d0f5a`);
+      const response = await instance.get(`/employee/${id}`);
 
       if (response.status === 200) {
         const { employeeName, jobStartDate, jobDesignation, status } = response.data.employee;
@@ -83,7 +86,7 @@ setEmployee({
     };
 
     try {
-      const response = await instance.post(`/employee/650b3f18897953b5556d0f5a`, data);
+      const response = await instance.post(`/employee/${id}`, data);
 
       if (response.status === 200) {
         setSuccessMessage(response.data.message);
