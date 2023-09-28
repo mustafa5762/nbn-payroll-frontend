@@ -21,7 +21,7 @@ const TextField = ({ label, type, value, onChange, style }) => {
   return (
     <div className="flex flex-col md:flex-row md:items-center">
       <label
-        className={`block text-[#5792cf] font-medium ${label !== "From"? "md:w-36" : "md:w-16"} text-right`}
+        className={`block text-[#5792cf] font-medium ${label !== "From" && label !== "To" ? "md:w-36" : label === "To"? "md:w-12" : "md:w-16" } text-right`}
         htmlFor={label}
       >
         {label}

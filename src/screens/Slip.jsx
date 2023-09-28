@@ -82,12 +82,18 @@ function Slip() {
 
   return (
     <div className='p-4'>
+      
       <div className='flex mb-6 items-center justify-center space-x-6'>
+      {!selectedUsername || !fromDate || !toDate  ?
+      null :
         <h1 className='text-4xl mb-4 text-[#5792cf] font-bold underline'>
           {' '}
           <img src={nbn} width={100} />
         </h1>
+}
       </div>
+      {!selectedUsername || !fromDate || !toDate || entries.length <= 0  ?
+      <>
       <div className='flex justify-between items-center'>
         <div></div>
 
@@ -121,7 +127,9 @@ function Slip() {
             {loading ? 'Getting Report...' : 'Get Salary Slip'}
           </button>
         </div>
-      </div>
+      </div> 
+  </>: null
+      }
       <div className='p-4'>
         {loading ? (
           <p>Loading...</p>
