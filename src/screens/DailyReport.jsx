@@ -16,7 +16,8 @@ function DailyReport() {
         setLoading(true);
         const response = await instance.get(`/allentries?page=${page}&pageSize=${pageSize}`);
         const data = response.data;
-        setEntries(data.entries);
+        // Reverse the order of entries before setting in the state
+        setEntries(data.entries.reverse());
         setTotalPages(data.totalPages);
         setLoading(false);
       } catch (err) {
@@ -24,7 +25,7 @@ function DailyReport() {
         setLoading(false);
       }
     };
-
+  
     fetchEntries();
   }, [page, pageSize]);
 
