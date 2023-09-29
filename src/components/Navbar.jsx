@@ -15,7 +15,7 @@ function Navbar() {
     <div>
         <div  className="text-5xl text-[#5792cf] text-center py-5 font-bold"><Link to={"/"}>NBN PAYROLL SYSTEM </Link></div>
       {accessToken ? 
-      <div className="flex justify-center items-center p-2 space-x-8 bg-[#5792cf]">
+      <div className="flex justify-center items-center p-1 space-x-8 bg-[#5792cf]">
             <NavLink className={({ isActive }) =>
               isActive
                 ? "text-xl text-[#5792cf] bg-white font-medium px-4 py-2"
