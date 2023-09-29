@@ -13,7 +13,7 @@ function Navbar() {
   }
   return (
     <div>
-        <div className="text-5xl text-[#5792cf] text-center py-5 font-bold">NBN PAYROLL SYSTEM</div>
+        <div  className="text-5xl text-[#5792cf] text-center py-5 font-bold"><Link to={"/"}>NBN PAYROLL SYSTEM </Link></div>
       {accessToken ? 
       <div className="flex justify-center items-center p-2 space-x-8 bg-[#5792cf]">
             <NavLink className={({ isActive }) =>
@@ -69,6 +69,10 @@ function Navbar() {
                 Logout
             </Link>
         </div>: null }
+<div className='footer'>
+  <h3>Copyrights 2023 @ NBN Payroll System</h3>
+  </div>
+
 
     </div>
   )

@@ -5,7 +5,7 @@ import instance from "../../axios";
 import Cookies from 'js-cookie';
 import { Navigate } from "react-router-dom";
 
-const Login = ({isLoggedIn}) => {
+const Login = ({ isLoggedIn }) => {
   // State to store the email input value
   const [email, setEmail] = useState("");
 
@@ -30,47 +30,47 @@ const Login = ({isLoggedIn}) => {
     setloading(true)
 
     if (!email || !password) {
-        setErrore("All fields are required.");
-        setloading(false);
-        return;
-      }
+      setErrore("All fields are required.");
+      setloading(false);
+      return;
+    }
 
     const data = {
-        email,
-        password
+      email,
+      password
     }
 
     try {
-        // Make a POST request using Axios
-        const response = await instance.post('/login', data);
-    
-        // Check if the request was successful
-        if (response.status === 200) {
-          setErrore(null);
-          Cookies.set('accessToken', response.data.token, { secure: true, expires: 1, path: '/' });
-          Cookies.set('username', response.data.user, { secure: true, expires: 1, path: '/' });
-          setloading(false)
-          window.location = '/'
-        } else {
-          setErrore('An error occurred while submitting the form.');
-          setloading(false)
-        }
-      } catch (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx (e.g., 4xx or 5xx)
-          setErrore(error.response.data.message);
-          setloading(false)
-        } else if (error.request) {
-          // The request was made but no response was received
-          setErrore('No response received from the server. Please try again later.');
-          setloading(false)
-        } else {
-          // Something happened in setting up the request
-          setErrore('An error occurred while making the request.');
-          setloading(false)
-        }
-      } 
+      // Make a POST request using Axios
+      const response = await instance.post('/login', data);
+
+      // Check if the request was successful
+      if (response.status === 200) {
+        setErrore(null);
+        Cookies.set('accessToken', response.data.token, { secure: true, expires: 1, path: '/' });
+        Cookies.set('username', response.data.user, { secure: true, expires: 1, path: '/' });
+        setloading(false)
+        window.location = '/'
+      } else {
+        setErrore('An error occurred while submitting the form.');
+        setloading(false)
+      }
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx (e.g., 4xx or 5xx)
+        setErrore(error.response.data.message);
+        setloading(false)
+      } else if (error.request) {
+        // The request was made but no response was received
+        setErrore('No response received from the server. Please try again later.');
+        setloading(false)
+      } else {
+        // Something happened in setting up the request
+        setErrore('An error occurred while making the request.');
+        setloading(false)
+      }
+    }
   };
 
   if (isLoggedIn) {
@@ -86,7 +86,7 @@ const Login = ({isLoggedIn}) => {
             <h1>Sign In</h1>
           </div>
           <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
-          {errore && <p className="error">{errore}</p>}
+            {errore && <p className="error" style={{fontSize: "1em",}}>{errore}</p>}
             <TextField
               style="fill"
               label="Email"
@@ -104,11 +104,14 @@ const Login = ({isLoggedIn}) => {
             {loading ? (
               <p>Loading...</p>
             ) : (
-              
-              <button type="submit" className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >Submit</button>
+
+              <button type="submit" style={{width: "30%", alignSelf: "end"}} className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >Submit</button>
             )}
           </form>
         </div>
+      </div>
+      <div className='footer'>
+        <h3>Copyrights 2023 @ NBN Payroll System</h3>
       </div>
     </div>
   );

@@ -76,7 +76,7 @@ function EmployeeReport() {
       </div>
       <div className="flex justify-between items-center">
         <div></div>
-        <div className="flex items-center ">
+        <div className="flex items-center " style={{width: "100%", overflow: "hidden"}}>
           <TextField
             label='From'
             type='date'
@@ -106,7 +106,7 @@ function EmployeeReport() {
             type="submit"
             className=" mt-4 bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             disabled={loading || !areFieldsValid()} // Disable the button if any required field is empty
-            onClick={fetchEntries}
+            onClick={fetchEntries} 
           >
             {loading ? "Getting Report..." : "Get Report"}
           </button>

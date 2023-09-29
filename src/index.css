@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: century gothic, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,4 +22,14 @@ code {
 
 .bb2{
   border-bottom: 2px solid #5792cf;
+}
+
+.footer{
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #5792cf;
+  color: white;
+  text-align: center;
 }
