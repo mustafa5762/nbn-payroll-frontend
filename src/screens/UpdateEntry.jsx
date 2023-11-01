@@ -4,6 +4,7 @@ import UsernameSelector from '../components/UsernameSelector';
 import CheckboxGroup from '../components/CheckboxGroup';
 import instance from '../axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import TextArea from '../components/Textarea';
 
 function UpdateEntry() {
   // State variables
@@ -168,26 +169,26 @@ function UpdateEntry() {
           <div className="text-green-500 mb-4">{successMessage}</div>
         )}
         <form onSubmit={handleSubmit} className="w-full max-w-lg flex flex-col space-y-4">
-          <TextField  label='Date' type='date' value={date} onChange={(e) => handleInputChange(e, setDate)} />
+          <TextField style='border' label='Date' type='date' value={date} onChange={(e) => handleInputChange(e, setDate)} />
           <UsernameSelector
             label="Employee name"
             usernames={usernames}
             selectedUsername={selectedUsername}
             onChange={(e) => handleInputChange(e, setSelectedUsername)}
           />
-          <TextField  label='Job Designation' type='text' value={jobDesignation} onChange={(e) => handleInputChange(e, setJobDesignation)} />
-          <TextField  label='Rate / Hour' type='number' value={ratePerHour} onChange={(e) => handleInputChange(e, setRatePerHour)} />
-          <TextField  label='Working Hours' type='number' value={workingHours} onChange={(e) => handleInputChange(e, setWorkingHours)} />
+          <TextField style='border' label='Job Designation' type='text' value={jobDesignation} onChange={(e) => handleInputChange(e, setJobDesignation)} />
+          <TextField style='border' label='Rate / Hour' type='number' value={ratePerHour} onChange={(e) => handleInputChange(e, setRatePerHour)} />
+          <TextField style='border' label='Working Hours' type='number' value={workingHours} onChange={(e) => handleInputChange(e, setWorkingHours)} />
           <CheckboxGroup label="Select Options" options={options} selectedValues={selectedOptions} onChange={handleCheckboxChange} />
-          <TextField  label='OT Calculation' type='number' value={otCalculation} onChange={(e) => handleInputChange(e, setOtCalculation)} />
-          <TextField  label='Driving / Traveling' type='number' value={drivingTraveling} onChange={(e) => handleInputChange(e, setDrivingTraveling)} />
-          <TextField  label='Sickness' type='number' value={sickness} onChange={(e) => handleInputChange(e, setSickness)} />
-          <TextField  label='Other Allowances' type='number' value={otherAllowances} onChange={(e) => handleInputChange(e, setOtherAllowances)} />
-          <TextField  label='Description' type='text' value={description} onChange={(e) => handleInputChange(e, setDescription)} />
+          <TextField style='border' label='OT Calculation' type='number' value={otCalculation} onChange={(e) => handleInputChange(e, setOtCalculation)} />
+          <TextField style='border' label='Driving / Traveling' type='number' value={drivingTraveling} onChange={(e) => handleInputChange(e, setDrivingTraveling)} />
+          <TextField style='border' label='Sickness' type='number' value={sickness} onChange={(e) => handleInputChange(e, setSickness)} />
+          <TextField style='border' label='Other Allowances' type='number' value={otherAllowances} onChange={(e) => handleInputChange(e, setOtherAllowances)} />
+          <TextArea style='border' label='Description' type='text' value={description} onChange={(e) => handleInputChange(e, setDescription)} />
           <div className="mt-4" style={{justifyContent: "end", display: "flex",marginRight: "3rem" }}>
             <button
               type="submit" 
-              className="bg-[#5792cf]  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               disabled={loading}
             >
               {loading ? "Updating..." : "Update"}

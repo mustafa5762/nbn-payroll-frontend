@@ -13,13 +13,13 @@ function Navbar() {
   }
   return (
     <div>
-        <div  className="text-5xl text-[#5792cf] text-center py-5 font-bold"><Link to={"/"}>NBN PAYROLL SYSTEM </Link></div>
+        <div  className="text-5xl text-[#5792cf] text-center py-4 font-bold"><Link to={"/"}>NBN PAYROLL SYSTEM </Link></div>
       {accessToken ? 
       <div className="flex justify-center items-center p-1 space-x-8 bg-[#5792cf]">
             <NavLink className={({ isActive }) =>
               isActive
-                ? "text-xl text-[#5792cf] bg-white font-medium px-4 py-2"
-                : "text-white text-xl font-medium px-4 py-2"
+                ? "text-lg text-[#5792cf] bg-white font-medium px-4 py-2"
+                : "text-white text-lg font-medium px-4 py-2"
               } 
               to={"/new_entry"}
             >
@@ -27,8 +27,8 @@ function Navbar() {
             </NavLink>
             <NavLink className={({ isActive }) =>
               isActive
-                ? "text-xl text-[#5792cf] bg-white font-medium px-4 py-2"
-                : "text-white text-xl font-medium px-4 py-2"
+                ? "text-lg text-[#5792cf] bg-white font-medium px-4 py-2"
+                : "text-white text-lg font-medium px-4 py-2"
               } 
               to={"/daily_report"}
             >
@@ -36,8 +36,8 @@ function Navbar() {
             </NavLink>
             <NavLink className={({ isActive }) =>
               isActive
-                ? "text-xl text-[#5792cf] bg-white font-medium px-4 py-2"
-                : "text-white text-xl font-medium px-4 py-2"
+                ? "text-lg text-[#5792cf] bg-white font-medium px-4 py-2"
+                : "text-white text-lg font-medium px-4 py-2"
               } 
               to={"/monthly_report"}
             >
@@ -45,8 +45,8 @@ function Navbar() {
             </NavLink>
             <NavLink className={({ isActive }) =>
               isActive
-                ? "text-xl text-[#5792cf] bg-white font-medium px-4 py-2"
-                : "text-white text-xl font-medium px-4 py-2"
+                ? "text-lg text-[#5792cf] bg-white font-medium px-4 py-2"
+                : "text-white text-lg font-medium px-4 py-2"
               } 
               to={"/employee_report"}
             >
@@ -54,15 +54,15 @@ function Navbar() {
             </NavLink>
             <NavLink className={({ isActive }) =>
               isActive
-                ? "text-xl text-[#5792cf] bg-white font-medium px-4 py-2"
-                : "text-white text-xl font-medium px-4 py-2"
+                ? "text-lg text-[#5792cf] bg-white font-medium px-4 py-2"
+                : "text-white text-lg font-medium px-4 py-2"
               } 
               to={"/employees"}
             >
                 Employees
             </NavLink>
             <Link className={
-               "text-white text-xl font-medium px-4 py-2"
+               "text-white text-lg font-medium px-4 py-2"
               } 
               onClick={handleLogout}
             >

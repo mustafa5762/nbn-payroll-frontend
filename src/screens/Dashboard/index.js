@@ -45,15 +45,15 @@ const Dashboard = () => {
 
           <div className="grid-container">
             <div className="grid-item">
-              <h2>Total Employees</h2>
+              <h2 className="font-semibold">Total Employees</h2>
               <p>{entries.length}</p>
             </div>
             <div className="grid-item">
-              <h2>Active Employees</h2>
+              <h2 className="font-semibold">Active Employees</h2>
               <p className="bgblue">{activeEmployees.length}</p>
             </div>
             <div className="grid-item">
-              <h2 className="bgblue">Inactive Employees</h2>
+              <h2 className="bgblue font-semibold">Inactive Employees</h2>
               <p>{inactiveEmployees.length}</p>
             </div>
           </div>

@@ -3,6 +3,7 @@ import TextField from '../components/Textfield';
 import UsernameSelector from '../components/UsernameSelector';
 import CheckboxGroup from '../components/CheckboxGroup';
 import instance from '../axios';
+import TextArea from '../components/Textarea';
 
 function NewEntry() {
   // State variables
@@ -162,7 +163,7 @@ function NewEntry() {
           <TextField style="fill" label='Driving / Traveling' type='number' value={drivingTraveling} onChange={(e) => handleInputChange(e, setDrivingTraveling)} />
           <TextField style="fill" label='Sickness' type='number' value={sickness} onChange={(e) => handleInputChange(e, setSickness)} />
           <TextField style="fill" label='Other Allowances' type='number' value={otherAllowances} onChange={(e) => handleInputChange(e, setOtherAllowances)} />
-          <TextField style="fill" label='Description' type='text' value={description} onChange={(e) => handleInputChange(e, setDescription)} />
+          <TextArea style="fill" label='Description' type='text' value={description} onChange={(e) => handleInputChange(e, setDescription)} />
           <div className="mt-4 flex justify-end">
             <button
               type="submit"

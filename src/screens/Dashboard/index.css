@@ -5,7 +5,8 @@
     white-space: nowrap;
     border-bottom: 1px solid #5792cf;
     border-top: 1px solid #5792cf;
-    margin-top: 2%;
+    margin-top: 1%;
+    padding: 10px 0;
   }
   
   .marquee-text {
