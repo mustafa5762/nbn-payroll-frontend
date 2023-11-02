@@ -9,7 +9,7 @@ function DataTable({ data, onEditClick }) {
         <thead>
           <tr>
             <th className="text-center px-2 py-2 w-auto border-2 border-[#5792cf] text-[#5792cf] text-left text-sm leading-4 tracking-wider">
-              ID
+              No.
             </th>
             <th className="text-center px-2 py-2 w-auto border-2 border-[#5792cf] text-[#5792cf] text-left text-sm leading-4 tracking-wider">
               Date
@@ -29,10 +29,10 @@ function DataTable({ data, onEditClick }) {
           </tr>
         </thead>
         <tbody>
-          {data.map((employee) => (
+          {data.map((employee, index) => (
             <tr key={employee._id}>
-            <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
-                {employee.employeeID}
+              <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
+                {index + 1}
               </td>
               <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {format(new Date(employee.jobStartDate), 'yyyy-MM-dd')}
@@ -44,7 +44,11 @@ function DataTable({ data, onEditClick }) {
                 {employee.jobDesignation}
               </td>
               <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
-                {employee.status}
+                {employee.status === 'onDuty' ? (
+                  <span className="text-green-500">OnDuty</span>
+                ) : (
+                  <span className="text-red-500">Dismiss</span>
+                )}
               </td>
               <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 <Link to={`/edit_employee/${employee._id}`} className='text-[#5792cf] underline'>
@@ -60,3 +64,5 @@ function DataTable({ data, onEditClick }) {
 }
 
 export default DataTable;
+
+

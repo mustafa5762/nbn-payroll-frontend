@@ -1,3 +1,14 @@
+@font-face {
+  font-family: century gothic;
+  src: url('fonts/GOTHIC.TTF');
+  font-weight: 400;
+}
+@font-face {
+  font-family: century gothic;
+  src: url('fonts/GOTHICB.TTF');
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   font-family: century gothic, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,11 +16,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 .max-w{

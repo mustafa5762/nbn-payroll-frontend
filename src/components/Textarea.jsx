@@ -1,0 +1,51 @@
+import React from "react";
+import PropTypes from "prop-types";
+
+const TextArea = ({ label, type, value, onChange, style }) => {
+  // Define styles based on the 'style' prop
+  const inputStyles = {
+    fill: {
+      backgroundColor: "#5792cf",
+      border: "none",
+      color: "white",
+    },
+    border: {
+      border: "1px solid #5792cf",
+      backgroundColor: "transparent",
+      color: "#5792cf",
+    },
+  };
+
+  const inputStyle = inputStyles[style] || {}; // Default to 'fill' style if not recognized
+
+  return (
+    <div className="flex flex-col md:flex-row md:items-center">
+      <label
+        className={`block text-[#5792cf] font-medium ${
+          label !== "From" && label !== "To" ? "md:w-36" : label === "To" ? "md:w-12" : "md:w-16"
+        } text-right`}
+        htmlFor={label}
+      >
+        {label}
+      </label>
+      <textarea
+        id={label}
+        value={value}
+        onChange={onChange}
+        style={inputStyle}
+        className="ml-3 rounded-md w-full md:w-[300px] py-2 px-3 text-white focus:outline-none focus:border focus:border-white"
+        rows={4} // Set the number of rows to 4 for a 4-line height
+      />
+    </div>
+  );
+};
+
+TextArea.propTypes = {
+  label: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(["text", "number"]).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired,
+  style: PropTypes.oneOf(["fill", "border"]).isRequired, // New 'style' prop
+};
+
+export default TextArea;

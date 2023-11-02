@@ -100,9 +100,9 @@ function NewEmployee({isLoggedIn}) {
         )}
         <form onSubmit={handleSubmit} className="w-full max-w flex flex-col space-y-4">
           <TextField style='fill' label='Date' type='date' value={date} onChange={(e) => handleInputChange(e, setDate)} />
-          <TextField  style='fill'label='Job Designation' type='text' value={jobDesignation} onChange={(e) => handleInputChange(e, setJobDesignation)} />
           <TextField style='fill' label='Employee Name' type='text' value={username} onChange={(e) => handleInputChange(e, setUsername)} />
-          <div className="mt-4">
+          <TextField  style='fill'label='Job Designation' type='text' value={jobDesignation} onChange={(e) => handleInputChange(e, setJobDesignation)} />
+          <div className="mt-4 flex justify-end">
             <button
               type="submit"
               className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex justify-end"

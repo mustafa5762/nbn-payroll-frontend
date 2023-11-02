@@ -88,7 +88,7 @@ function Slip() {
     <div className='p-4'>
       
       <div className='flex mb-6 items-center justify-center space-x-6'>
-      {!selectedUsername || !fromDate || !toDate  ?
+      {!selectedUsername || !fromDate || !toDate || entries.length <= 0  ?
       null :
         <h1 className='text-4xl mb-4 text-[#5792cf] font-bold underline'>
           {' '}
@@ -174,14 +174,14 @@ function Slip() {
                 </span>
               </h1>
             </div>
-          </>
-        )}
+            <div className="absolute right-10 bottom-10">
+          <h1 className='text-2xl mb-8 text-[#5792cf] text-center mt-6'>
+            Total Allowances: <span className='font-bold'>{formattedDate}</span>
+          </h1>
       </div>
-
-      <div className="absolute right-10 bottom-10">
-        <h1 className='text-2xl mb-8 text-[#5792cf] text-center mt-6'>
-              Total Allowances: <span className='font-bold'>{formattedDate}</span>
-        </h1>
+          </>
+          
+        )}
       </div>
     </div>
   );

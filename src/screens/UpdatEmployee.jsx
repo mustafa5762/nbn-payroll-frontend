@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TextField from '../components/Textfield';
 import instance from '../axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import SelectField from '../components/SelectField';
 
 function UpdateEmployee() {
   // State variables
@@ -117,10 +118,9 @@ setEmployee({
     }
   };
 
-  // JSX return
   return (
     <div>
-        <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Update Employee</h1>
+      <h1 className="text-4xl mb-4 mt-4 text-[#5792cf] font-bold underline">Update Employee</h1>
 
       <div className="flex flex-col items-center justify-center mt-40">
         {errorMessage && (
@@ -131,21 +131,13 @@ setEmployee({
         )}
         <form onSubmit={handleSubmit} className="w-full max-w-lg flex flex-col space-y-4">
           <TextField style='border' label="Date" type="date" value={employee.date} onChange={(e) => handleInputChange(e, "date")} />
-          <TextField style='border' label="Job Designation" type="text" value={employee.jobDesignation} onChange={(e) => handleInputChange(e, "jobDesignation")} />
           <TextField style='border' label="Employee Name" type="text" value={employee.username} onChange={(e) => handleInputChange(e, "username")} />
-          <div>
-            <label htmlFor="status" className="block text-gray-700 font-bold">Status</label>
-            <select
-              id="status"
-              className="block w-full mt-1 p-2 border rounded-md"
-              value={employee.status}
-              onChange={(e) => handleInputChange(e, "status")}
-            >
-              <option value="onDuty">On Duty</option>
-              <option value="offDuty">Off Duty</option>
-            </select>
-          </div>
-          <div className="mt-4">
+          <TextField style='border' label="Job Designation" type="text" value={employee.jobDesignation} onChange={(e) => handleInputChange(e, "jobDesignation")} />
+
+          {/* Replace the existing Status dropdown with the SelectField component */}
+          <SelectField label="Status" value={employee.status} onChange={(e) => handleInputChange(e, "status")} />
+
+          <div className="mt-4 flex justify-end mr-16">
             <button
               type="submit"
               className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

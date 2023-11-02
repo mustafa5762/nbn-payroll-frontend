@@ -47,9 +47,6 @@ function DataTable({ data, totalWorkingHours, totalGrandTotal }) {
             <th className="text-center px-2 py-2 w-auto border-2 border-[#5792cf] text-[#5792cf] text-left text-sm leading-4 tracking-wider">
               Description
             </th>
-            <th className="text-center px-2 py-2 w-auto border-2 border-[#5792cf] text-[#5792cf] text-left text-sm leading-4 tracking-wider">
-              Action
-            </th>
           </tr>
         </thead>
         <tbody>
@@ -97,13 +94,6 @@ function DataTable({ data, totalWorkingHours, totalGrandTotal }) {
               <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.description}
               </td>
-              <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
-                <Link
-                  className="text-[#5792cf] font-medium underline"
-                >
-                  Edit
-                </Link>
-              </td>
             </tr>
           ))}
                         <tr>
@@ -120,10 +110,8 @@ function DataTable({ data, totalWorkingHours, totalGrandTotal }) {
                 <td className="text-center px-2 py-2 w-auto"></td>
                 <td className="text-center px-2 py-2 w-auto"></td>
                 <td className="text-center px-2 py-2 w-auto"></td>
-                <td className="text-center px-2 py-2 w-auto"></td>
-                <td className="text-center px-2 py-2 w-auto"></td>
                 <td className="text-center px-2 py-2 w-auto border-[#5792cf] border-r"></td>
-                <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r font-bold">
+                <td className="text-center font-bold px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r font-bold">
                   Total Pays
                 </td>
                 <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r">
