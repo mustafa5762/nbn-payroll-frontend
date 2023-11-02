@@ -109,7 +109,9 @@ function DailyReport() {
       ) : (
         <>
           <h1 className="text-4xl mb-4 text-[#5792cf] font-bold underline">Daily Report</h1>
+          
           <DataTable data={entries} />
+        
           <div className="pagination pt-6">
             {renderPageNumbers()}
           </div>

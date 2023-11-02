@@ -10,10 +10,14 @@
     margin: 8% 38%;
 
     width:400px !important;
+    p{
+      font-size: 20px;
+    }
 }
 
 .heading h1{
   font-size: 25px;
+  color: #5792cf;
 }
 
 .label{
