@@ -147,7 +147,7 @@ function NewEntry() {
         {successMessage && (
           <div className="text-green-500 mb-4">{successMessage}</div>
         )}
-        <form onSubmit={handleSubmit} className="w-full max-w flex flex-col space-y-3">
+        <form onSubmit={handleSubmit} className="w-full max-w flex flex-col space-y-3 mb-8">
           <TextField style='fill' label='Date' type='date' value={date} onChange={(e) => handleInputChange(e, setDate)} />
           <UsernameSelector
             label="Employee name"

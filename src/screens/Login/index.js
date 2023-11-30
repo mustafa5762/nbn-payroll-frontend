@@ -102,7 +102,7 @@ const Login = ({ isLoggedIn }) => {
               onChange={handlePasswordChange}
             />
             {loading ? (
-              <p>Loading...</p>
+              <p style={{fontSize: "16px"}}>Loading...</p>
             ) : (
 
               <button type="submit" style={{width: "30%", alignSelf: "end"}} className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >Submit</button>

@@ -44,7 +44,7 @@ function MonthlyReport() {
 
   return (
     <>
-      <div className="flex justify-between items-center p-4">
+      <div className="flex justify-around items-center p-4">
         <div>
           <h1 className="text-4xl mb-4 text-[#5792cf] font-bold underline">Monthly Report</h1>
         </div>

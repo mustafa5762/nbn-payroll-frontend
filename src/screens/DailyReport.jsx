@@ -70,7 +70,7 @@ function DailyReport() {
           
           <DataTable data={entries} />
         
-          <div className="pagination pt-6">
+          <div className="pagination pt-6 mb-8">
             {renderPageNumbers()}
           </div>
         </>

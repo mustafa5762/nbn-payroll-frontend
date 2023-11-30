@@ -74,7 +74,7 @@ function EmployeeReport() {
         <Link to="/salary_slip" className="bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Salary Slip</Link>
      
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-around items-center">
         <div></div>
         <div className="flex items-center " style={{width: "100%", overflow: "hidden"}}>
           <TextField
@@ -97,20 +97,19 @@ function EmployeeReport() {
             selectedUsername={selectedUsername}
             onChange={(e) => setSelectedUsername(e.target.value)}
           />
-         
-        </div>
-       
-      </div>
-      <div style={{width: "100%" , justifyContent: "end", display: "flex"}}>
       <button
             type="submit"
-            className=" mt-4 bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="ml-4  bg-[#5792cf] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             disabled={loading || !areFieldsValid()} // Disable the button if any required field is empty
             onClick={fetchEntries} 
           >
             {loading ? "Getting Report..." : "Get Report"}
           </button>
-          </div>
+          
+        </div>
+    
+      </div>
+    
       <div className="p-4">
         {loading ? (
           <p>Loading...</p>
