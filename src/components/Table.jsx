@@ -74,11 +74,22 @@ function DataTable({ data, onEditClick }) {
                 {entry.ratePerHour * entry.workingHours}
               </td>
               <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
-                {/* Filter the true values from overtimeOptions and join them with a comma */}
-                {Object.keys(entry.overtimeOptions)
-                  .filter((key) => entry.overtimeOptions[key] === true)
-                  .join(', ')}
-              </td>
+  {/* Filter the true values from overtimeOptions and join them with a comma */}
+  {Object.entries(entry.overtimeOptions)
+    .filter(([key, value]) => {
+      if (key === 'workOnSaturday') return value ? 'WorkOnSat' : '';
+      if (key === 'workOnSunday') return value ? 'WorkOnSun' : '';
+      if (key === 'workBefore6PM') return value ? 'W.B' : '';
+      if (key === 'workAfter6PM') return value ? 'W.A' : '';
+      return value === true;
+    })
+    .map(([key, value]) => {
+      debugger
+      if (typeof value === 'boolean') return key;
+      return value;
+    })
+    .join(', ')}
+</td>
               <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.otCalculation}
               </td>
@@ -92,7 +103,7 @@ function DataTable({ data, onEditClick }) {
                 {entry.otherAllowances}
               </td>
               <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
-              {(entry.ratePerHour * entry.workingHours) + entry.otCalculation + entry.driving + entry.sickness + entry.otherAllowances}
+                {(entry.ratePerHour * entry.workingHours) + entry.otCalculation + entry.driving + entry.sickness + entry.otherAllowances}
               </td>
               <td className="text-center px-2 py-2 w-auto border-b border-[#5792cf] text-[#5792cf] border-r border-l">
                 {entry.description}

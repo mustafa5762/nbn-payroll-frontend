@@ -24,7 +24,7 @@ function NewEntry() {
   const [usernames, setUsernames] = useState([]); // Initialize as an empty array
 
   // Data
-  const options = ["W:B 6:00 (M-F)", "W:B 18:00 (M-F)", "Work on Saturday", "Work on Sunday", "Work on Red Day"];
+  const options = ["W:B 6:00 (M-F)", "W:A 18:00 (M-F)", "Work on Saturday", "Work on Sunday", "Work on Red Day"];
 
   useEffect(() => {
     // Fetch real usernames from the /employeenames endpoint

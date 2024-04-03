@@ -16,8 +16,28 @@ function DailyReport() {
         setLoading(true);
         const response = await instance.get(`/allentries?page=${page}&pageSize=${pageSize}`);
         const data = response.data;
+        
         // Reverse the order of entries before setting in the state
-        setEntries(data.entries);
+        const modifiedEntries = data.entries.map(entry => {
+          // Modify the overtimeOptions for each entry as needed
+          const modifiedOvertimeOptions = {};
+          for (const key in entry.overtimeOptions) {
+            if (key === 'workOnSaturday') {
+              modifiedOvertimeOptions['workOnSaturday'] = entry.overtimeOptions[key] ? 'WorkOnSat' : '';
+            } else if (key === 'workOnSunday') {
+              modifiedOvertimeOptions['workOnSunday'] = entry.overtimeOptions[key] ? 'WorkOnSun' : '';
+            } else if (key === 'workBefore6PM') {
+              modifiedOvertimeOptions['workBefore6PM'] = entry.overtimeOptions[key] ? 'W.B-6PM' : '';
+            } else if (key === 'workAfter6PM') {
+              modifiedOvertimeOptions['workAfter6PM'] = entry.overtimeOptions[key] ? 'W.A-6PM' : '';
+            } else {
+              modifiedOvertimeOptions[key] = entry.overtimeOptions[key];
+            }
+          }
+          return { ...entry, overtimeOptions: modifiedOvertimeOptions };
+        });
+        
+        setEntries(modifiedEntries);
         setTotalPages(data.totalPages);
         setLoading(false);
       } catch (err) {
